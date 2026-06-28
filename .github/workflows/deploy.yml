@@ -1,0 +1,40 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Download real video data
+        run: curl -s -o videos.json "${{ secrets.VIDEOS_R2_URL }}"
+
+      - name: Build
+        run: npm run build
+        env:
+          VITE_APP_TITLE: ${{ vars.VITE_APP_TITLE }}
+          VITE_OG_SITE_NAME: ${{ vars.VITE_OG_SITE_NAME }}
+          VITE_OG_TITLE: ${{ vars.VITE_OG_TITLE }}
+          VITE_OG_DESCRIPTION: ${{ vars.VITE_OG_DESCRIPTION }}
+          VITE_OG_URL: ${{ vars.VITE_OG_URL }}
+          VITE_OG_IMAGE: ${{ vars.VITE_OG_IMAGE }}
+          VITE_KEYWORDS: ${{ vars.VITE_KEYWORDS }}
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: undefined-videospage
+          directory: dist

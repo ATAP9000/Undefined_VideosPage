@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14px;
+  padding-bottom: 5px;
+}
+
+.header__brand {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 82px;
+  transition: width 1s ease-in;
+  overflow: hidden;
+}
+
+.header__brand--open {
+  width: 229px;
+  transition: width 1s ease-out;
+}
+
+.header__brand-logo {
+  height: 3em;
+}
+
+.header__social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  overflow: hidden;
+  max-height: 70%;
+}
+
+.header__social-link:nth-child(1) { padding: 0 5px 0 8px; }
+.header__social-link:nth-child(2) { padding: 0 3px; }
+.header__social-link:nth-child(3) { padding: 0 5px; }
+.header__social-link:nth-child(4) { padding: 0 5px; }
+
+.header__attribution-logo {
+  height: 3em;
+}

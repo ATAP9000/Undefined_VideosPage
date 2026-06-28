@@ -1,0 +1,38 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #202124;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  display: flex;
+  justify-content: stretch;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

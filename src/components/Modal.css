@@ -1,0 +1,50 @@
+.modal {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.modal__backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #202124;
+  opacity: 0.9;
+}
+
+.modal__box {
+  padding: 100px;
+  background-color: #202124;
+  z-index: 1;
+}
+
+.modal__content {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.modal__label {
+  width: 96px;
+}
+
+.modal__value {
+  flex: 1;
+  border-left: 1px solid white;
+  padding-left: 42px;
+  text-decoration: none;
+}

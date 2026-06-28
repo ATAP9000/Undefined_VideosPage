@@ -1,0 +1,27 @@
+{
+  "name": "undefined_videospage",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "setup-env": "node -e \"if(!require('fs').existsSync('.env'))require('fs').copyFileSync('.env.example','.env')\"",
+    "setup-videos": "node -e \"if(!require('fs').existsSync('videos.json'))require('fs').copyFileSync('videos.example.json','videos.json')\"",
+    "dev": "npm run setup-env && npm run setup-videos && vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.5.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.6.0",
+    "vite": "^8.1.0"
+  }
+}
