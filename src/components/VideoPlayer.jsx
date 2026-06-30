@@ -64,7 +64,6 @@ function VideoPlayer() {
                         onCanPlay={() => { setLoading(false); setFailCount(0); }}
                         autoPlay
                         controls
-                        muted
                     />
                 )}
             </div>
