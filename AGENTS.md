@@ -1,4 +1,4 @@
-# Undefined_VideosPage / Usamin Network
+# Undefined_VideosPage
 
 ## Stack
 
@@ -6,12 +6,13 @@
 - **ESLint 10** flat config (`eslint.config.js`).
 - No TypeScript. All source is plain `.jsx`/`.js`.
 - No test framework set up.
+- CSS with **BEM** convention, co-located per component.
 
 ## Commands
 
 | Command | Purpose |
 |---|---|
-| `npm run dev` | Dev server on port **60499** |
+| `npm run dev` | Dev server on port **60499** (auto-runs `setup-env` + `setup-videos`) |
 | `npm run build` | Production build to `dist/` |
 | `npm run lint` | ESLint on `**/*.{js,jsx}` |
 | `npm run preview` | Preview production build |
@@ -21,24 +22,10 @@
 ## Video data system
 
 - `videos.example.json` — committed to repo, 3-entry schema example
-- `videos.json` — gitignored, real data. **Required for the app to work.**
+- `videos.json` — committed, 77 entries synced with `videos/`. Fields: `Name`, `Video` (R2 URL), `Source`, `Music`, `Movie`.
+- `videos/` — local video files. Upload to R2 when adding new content.
 - On first `npm run dev`, `setup-videos` auto-copies the example if `videos.json` doesn't exist.
-- **Production**: download real data before build (`R2` or set as secret in CI):
-  ```
-  curl -s -o videos.json $VIDEOS_R2_URL && npm run build
-  ```
-
-## CI / Deploy
-
-`.github/workflows/deploy.yml` builds and deploys to Cloudflare Pages on push to `main`.
-Requires these secrets/vars in the GitHub repo:
-
-| Secret | Purpose |
-|---|---|
-| `VIDEOS_R2_URL` | Signed URL to the real `videos.json` in R2 |
-| `CLOUDFLARE_API_TOKEN` | Cloudflare API token with Pages write access |
-| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID |
-| `VITE_*` (vars) | OG meta tag values for production |
+- **Production**: `npm run build` uses the committed `videos.json`. To fetch from R2 instead, add a download step to the Cloudflare build command.
 
 ## Meta tags / environment
 
