@@ -20,4 +20,3 @@ npm run lint     # ESLint
 ## Despliegue
 
 Build automático en Cloudflare Pages al hacer push a `main`.
-Los datos reales de videos se descargan desde R2 durante el build.

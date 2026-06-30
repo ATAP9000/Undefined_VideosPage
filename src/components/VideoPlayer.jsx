@@ -49,23 +49,26 @@ function VideoPlayer() {
             <Header />
             <div className="player__video-box">
                 {loading && <div className="player__shimmer" />}
-                {failCount >= MAX_FAILS ? (
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-                        <p>Parece que el servidor de videos no está bien</p>
-                    </div>
-                ) : (
-                    <video
-                        className="player__video"
-                        key={currentVideo.Video}
-                        src={currentVideo.Video}
-                        onEnded={randomVideo}
-                        onError={handleError}
-                        onLoadStart={() => setLoading(true)}
-                        onCanPlay={() => { setLoading(false); setFailCount(0); }}
-                        autoPlay
-                        controls
-                    />
-                )}
+                <div className="player__video-wrapper">
+                    {failCount >= MAX_FAILS ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+                            <p>Parece que el servidor de videos no está bien</p>
+                        </div>
+                    ) : (
+                        <video
+                            className="player__video"
+                            key={currentVideo.Video}
+                            src={currentVideo.Video}
+                            onEnded={randomVideo}
+                            onError={handleError}
+                            onLoadStart={() => setLoading(true)}
+                            onCanPlay={() => { setLoading(false); setFailCount(0); }}
+                            autoPlay
+                            controls
+                        />
+                    )}
+                </div>
+                <button className="player__refresh" onClick={randomVideo}>↻</button>
             </div>
             <footer className="footer">
                 <a target="_blank" href="https://www.youtube.com/watch?v=HdzImxI47W4" rel="noopener noreferrer">

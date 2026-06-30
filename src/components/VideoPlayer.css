@@ -16,13 +16,38 @@
 
 .player__video-box {
   flex: 1;
-  padding: 8px;
+  padding: 8px 8px 0;
   text-align: center;
   position: relative;
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.player__video-wrapper {
+  flex: 1;
+  display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  width: 100%;
+  min-height: 0;
+}
+
+.player__refresh {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 0 8px;
+  transition: color 0.2s;
+  position: relative;
+  z-index: 2;
+}
+
+.player__refresh:hover {
+  color: #fff;
 }
 
 .player__shimmer {
@@ -51,6 +76,7 @@
 
 .footer__disclaimer {
   width: 75%;
+  justify-content: center;
 }
 
 .footer__akari {
